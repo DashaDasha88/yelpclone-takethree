@@ -3,7 +3,7 @@ import RestaurantFinder from "../apis/RestaurantFinder";
 
 const RestaurantList = (props) => {
 
-  const {restaurants, setRestaurants} = useContext(RestaurantContext)
+  const {restaurants, setRestaurants} = useContext(RestaurantContext);
 
   useEffect(() => {
 
@@ -35,14 +35,18 @@ const RestaurantList = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Saigon Lotus</td>
-            <td>Toronto</td>
-            <td>$$</td>
-            <td>Rating</td>
-            <td><button className="btn btn-warning">Update</button></td>
-            <td><button className="btn btn-danger">Delete</button></td>
-          </tr>
+          {restaurants && restaurants.map((restaurant) => {
+            return (
+              <tr key={restaurant.id}>
+                <td>{restaurant.name}</td>
+                <td>{restaurant.location}</td>
+                <td>{"$".repeat(restaurant.price_range)}</td>
+                <td>reviews</td>
+                <td><button className="btn btn-warning">Update</button></td>
+                <td><button className="btn btn-danger">Delete</button></td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
