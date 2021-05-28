@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import RestaurantFinder from "../apis/RestaurantFinder";
 
-const RestaurantList = () => {
+const RestaurantList = (props) => {
+
+  const {restaurants, setRestaurants} = useContext(RestaurantContext)
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await RestaurantFinder.get("/");
+        setRestaurants(response.data.data.restaurants) //sets our state and store our restaurants within that state
+      } catch (err) {
+  
+      }
+
+      fetchData();
+
+    }
+
+  }, []);
+
   return (
     <div className="list-group">
       <table className="table table-hover table-dark">
