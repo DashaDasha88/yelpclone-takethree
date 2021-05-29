@@ -54,7 +54,7 @@ const RestaurantList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {restaurants && restaurants.map((restaurant) => {
+          {restaurants.map((restaurant) => {
             return (
               <tr key={restaurant.id}>
                 <td>{restaurant.name}</td>
