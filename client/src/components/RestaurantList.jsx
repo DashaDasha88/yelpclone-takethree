@@ -26,7 +26,7 @@ const RestaurantList = (props) => {
 
   const handleDelete = async {id} => {
     try {
-      const response = await RestaurantFinder.delete(`/${id}`);
+      const response = await RestaurantFinder.delete(id);
       setRestaurants(restaurants.filter(restaurant => {
           return restaurant.id !== id
         })
